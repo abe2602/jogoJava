@@ -24,23 +24,20 @@ import javax.swing.JPanel;
  *
  * @author Abe
  */
-public class panelFrame extends JPanel{
+public class panelFrame extends JPanel
+{
     private Personagem p;
-    private int x = 128, y = 200;
     
     public panelFrame()
     {
         this.setVisible(true);
         this.setFocusable(true);
-       // this.addKeyListener(new InputHandler());
+        // this.addKeyListener(new InputHandler());
         this.setSize(600, 400);
         this.p = new Personagem();
-        
-		
-		//set a random background color to distinguish the play panel from the rest
-	this.setBackground(Color.WHITE);
-		
-		//set no layouts
+	//set a random background color to distinguish the play panel from the rest
+	this.setBackground(Color.WHITE);	
+	//set no layouts
 	this.setLayout(null);
     }
     
@@ -50,11 +47,6 @@ public class panelFrame extends JPanel{
         super.paintComponent(g);
         Graphics2D g2=(Graphics2D)g;
         this.p.getFrameDir();
-        while(true){
-        g2.drawImage(this.p.getFrameDir(),x, y, null);     
-            x++;
-            y++;
-        }
+        g2.drawImage(this.p.getFrameDir(),this.p.getPosiAtualX(), this.p.getPosiAtualY(),null);     
     }
-
 }

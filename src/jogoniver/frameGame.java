@@ -12,7 +12,8 @@ import javax.swing.WindowConstants;
  *
  * @author Abe
  */
-public class frameGame extends JFrame{
+public class frameGame extends JFrame
+{
     public frameGame()
     {
         panelFrame panel = new panelFrame();

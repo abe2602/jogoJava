@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 /**
- * lalalalalala
+ * 
  * ARRUMAR MOVIMENTO DO FRAME
  *O que fazer?
  * -Usar o JFrame
@@ -18,7 +18,8 @@ import javax.swing.WindowConstants;
  * -criar o personagem
  * @author Abe
  */
-public class JogoNiver {
+public class JogoNiver 
+{
 
     /**
      * @param args the command line arguments
