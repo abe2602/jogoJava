@@ -26,7 +26,7 @@ import javax.swing.JPanel;
  */
 public class panelFrame extends JPanel
 {
-    private Personagem p;
+    public Personagem p;
     
     public panelFrame()
     {
@@ -47,6 +47,6 @@ public class panelFrame extends JPanel
         super.paintComponent(g);
         Graphics2D g2=(Graphics2D)g;
         this.p.getFrameDir();
-        g2.drawImage(this.p.getFrameDir(),this.p.getPosiAtualX(), this.p.getPosiAtualY(),null);     
+        g2.drawImage(this.p.getCurrentFrame(),this.p.getPosiAtualX(), this.p.getPosiAtualY(),null);     
     }
 }

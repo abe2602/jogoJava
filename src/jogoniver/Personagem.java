@@ -18,17 +18,17 @@ import javax.imageio.ImageIO;
  */
 public class Personagem extends Thread
 {
-    private BufferedImage frameDir;
     private int posiAtualX = 128, posiAtualY = 200;
-    private static int PASSO = 4;
-       
+    private BufferedImage frameDir, frameEsq, currentFrame = null;
+    private BufferedImage[] run_R = null, run_L = null;     
+    
     public Personagem()
     {    
-        try {
-            frameDir = ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(panelFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        run_L = new BufferedImage[6];
+        run_R = new BufferedImage[6];  
+        
+        this.loadImagens();
+        currentFrame = frameDir;
     }
     
     
@@ -36,17 +36,77 @@ public class Personagem extends Thread
     {
         switch(dir) {
             case KeyEvent.VK_RIGHT:
-                posiAtualX += PASSO;
+                
             break;
 
             case KeyEvent.VK_LEFT:
-                posiAtualX -= PASSO;
+                
             break;
             
             default:
             break;
     
         }
+    }
+ 
+       public void loadImagens()
+       {
+            try {
+		frameDir=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r.png"));
+		frameEsq=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l.png"));
+			
+		run_R[0]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r0.png"));
+		run_L[0]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l0.png"));
+			
+		run_R[1]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r1.png"));
+		run_L[1]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l1.png"));
+			
+		run_R[2]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r2.png"));
+		run_L[2]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l2.png"));
+			
+		run_R[3]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r3.png"));
+		run_L[3]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l3.png"));
+			
+		run_R[4]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r4.png"));
+		run_L[4]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l4.png"));
+			
+		run_R[5]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r5.png"));
+		run_L[5]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l5.png"));
+            } catch (Exception e) {
+		e.printStackTrace();
+		}       
+       }    
+
+    public BufferedImage getFrameEsq() {
+        return frameEsq;
+    }
+
+    public void setFrameEsq(BufferedImage frameEsq) {
+        this.frameEsq = frameEsq;
+    }
+
+    public BufferedImage getCurrentFrame() {
+        return currentFrame;
+    }
+
+    public void setCurrentFrame(BufferedImage currentFrame) {
+        this.currentFrame = currentFrame;
+    }
+
+    public BufferedImage[] getRun_R() {
+        return run_R;
+    }
+
+    public void setRun_R(BufferedImage[] run_R) {
+        this.run_R = run_R;
+    }
+
+    public BufferedImage[] getRun_L() {
+        return run_L;
+    }
+
+    public void setRun_L(BufferedImage[] run_L) {
+        this.run_L = run_L;
     }
     
     public int getPosiAtualX() {

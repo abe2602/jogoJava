@@ -10,11 +10,10 @@ import javax.swing.WindowConstants;
 
 /**
  * 
- * ARRUMAR MOVIMENTO DO FRAME
  *O que fazer?
- * -Usar o JFrame
- * -Usar o JPanel
- * -Criar mecanismo de controles
+ * -Criar mecanismo de controles{
+ *      Atualizar o sprite após o movimento
+ * }
  * -criar o personagem
  * @author Abe
  */
@@ -26,5 +25,6 @@ public class JogoNiver
      */
     public static void main(String[] args) {
         frameGame gameFrame = new frameGame();
+        gameFrame.start();
     }
 }
