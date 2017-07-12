@@ -31,23 +31,6 @@ public class Personagem extends Thread
         currentFrame = frameDir;
     }
     
-    
-    public void movimenta(int dir)
-    {
-        switch(dir) {
-            case KeyEvent.VK_RIGHT:
-                
-            break;
-
-            case KeyEvent.VK_LEFT:
-                
-            break;
-            
-            default:
-            break;
-    
-        }
-    }
  
        public void loadImagens()
        {
