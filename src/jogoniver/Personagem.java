@@ -5,6 +5,7 @@
  */
 package jogoniver;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -13,15 +14,18 @@ import java.awt.event.KeyEvent;
 import javax.imageio.ImageIO;
 
 /**
- *
+ *Classe a qual é responsável pela atualização do boneco, é nela onde setamos as
+ * posições atuais, além de realizar a troca de sprites
  * @author Abe
  */
 public class Personagem extends Thread
 {
-    private int posiAtualX = 128, posiAtualY = 200;
-    private BufferedImage frameDir, frameEsq, currentFrame = null;
-    private BufferedImage[] run_R = null, run_L = null;     
-    
+    private int posiAtualX = 128, posiAtualY = 200; //Posições iniciais(X, Y) do sprite
+    private BufferedImage frameDir, frameEsq, currentFrame = null; //Ajuda na troca dos sprites
+    private BufferedImage[] run_R = null, run_L = null;//Guardo os vários sprites
+    private final int alturaSprite = 64, comprimentoSprite = 40; //Altura e comprimento do sprite
+    private Rectangle boxColisao = null; // "Caixa" de colisão  
+    /*Construtor*/
     public Personagem()
     {    
         run_L = new BufferedImage[6];
@@ -29,9 +33,10 @@ public class Personagem extends Thread
         
         this.loadImagens();
         currentFrame = frameDir;
+        boxColisao= new Rectangle(posiAtualX, posiAtualY, alturaSprite, comprimentoSprite);
     }
     
- 
+    /*Carrega todas as imagens em memória*/
        public void loadImagens()
        {
             try {
@@ -59,7 +64,8 @@ public class Personagem extends Thread
 		e.printStackTrace();
 		}       
        }    
-
+       
+    /*Getters and setters*/   
     public BufferedImage getFrameEsq() {
         return frameEsq;
     }

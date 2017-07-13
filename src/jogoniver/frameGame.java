@@ -26,7 +26,7 @@ public class frameGame extends JFrame
     private int FPS = 60;
     private int px;
     private char lastKey;
-    private boolean[] controleTecla = new boolean[4];
+    private boolean jogando = true;
     private final Set<Integer> pressed = new HashSet<Integer>();
     
     public frameGame()
@@ -44,86 +44,15 @@ public class frameGame extends JFrame
             @Override
             public void keyPressed(KeyEvent e) 
             {
-                int tecla = e.getKeyCode(), atual = 0;
-                BufferedImage[] aux = null;
-
-                    switch(tecla){
-                        case KeyEvent.VK_RIGHT:
-                            atual = panel.p.getPosiAtualX();
-                            panel.p.setPosiAtualX(atual + 10);
-
-                            aux = panel.p.getRun_R();
-                            panel.p.setCurrentFrame(aux[1]);   
-
-                            lastKey = 'd';
-                            break;
-
-                        case KeyEvent.VK_UP:
-                            atual = panel.p.getPosiAtualY();
-                            panel.p.setPosiAtualY(atual - 10);
-
-                            if(lastKey == 'd'){
-                                aux = panel.p.getRun_R();
-                                panel.p.setCurrentFrame(aux[0]);   
-                            }else if(lastKey == 'e'){
-                                aux = panel.p.getRun_L();
-                                panel.p.setCurrentFrame(aux[0]);   
-                            }
-
-                            break; 
-
-                        case KeyEvent.VK_LEFT:
-                            atual = panel.p.getPosiAtualX();
-                            panel.p.setPosiAtualX(atual - 10);
-                            aux = panel.p.getRun_L();
-
-                            panel.p.setCurrentFrame(aux[1]);
-
-                            lastKey = 'e';
-                            break;              
-                 }
+                Keyboard teclado = new Keyboard(e.getKeyCode(), panel, lastKey);
+                teclado.moveSprite();
             }
 
             @Override
             public void keyReleased(KeyEvent e) 
             {    
-               int tecla = e.getKeyCode(), atual = 0;
-               BufferedImage aux = null;
-
-                    switch(tecla){
-                        case KeyEvent.VK_RIGHT:
-                            atual = panel.p.getPosiAtualX();
-                            panel.p.setPosiAtualX(atual + 10);
-
-                            aux = panel.p.getFrameDir();
-                            panel.p.setCurrentFrame(aux);                        
-                            break;
-
-                        case KeyEvent.VK_UP:                   
-                            if(lastKey == 'd'){
-                                atual = panel.p.getPosiAtualY();
-                                panel.p.setPosiAtualY(200);
-
-                                aux = panel.p.getFrameDir();
-                                panel.p.setCurrentFrame(aux);  
-                            }else if(lastKey == 'e'){
-                                atual = panel.p.getPosiAtualY();
-                                panel.p.setPosiAtualY(200);
-
-                                aux = panel.p.getFrameEsq();
-                                panel.p.setCurrentFrame(aux);
-                            }                    
-
-                            break;                    
-
-                         case KeyEvent.VK_LEFT:
-                            atual = panel.p.getPosiAtualX();
-                            panel.p.setPosiAtualX(atual - 10);
-                            aux = panel.p.getFrameEsq();
-
-                            panel.p.setCurrentFrame(aux);
-                            break; 
-                 }
+                Keyboard teclado = new Keyboard(e.getKeyCode(), panel, lastKey);
+                teclado.unMoveSprite();
             }
         });
 
@@ -136,7 +65,7 @@ public class frameGame extends JFrame
 
     public void start()
     {        
-        while(true){   
+        while(jogando){   
             long prxAtualizacao = 0; 
             if (System.currentTimeMillis() >= prxAtualizacao) {
                 this.panel.repaint();
