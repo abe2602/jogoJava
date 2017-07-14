@@ -5,16 +5,22 @@
  */
 package jogoniver;
 
+import gui.frameGame;
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 /**
  * 
  *O que fazer?
- * -Criar mecanismo de controles{
- *      Atualizar o sprite após o movimento
+ * Cenário{
+ *  Matrix , onde temos as posições válidas e inválidas
+ *  com essa matrix, colocaremos os sprites do cenário
  * }
- * -criar o personagem
+ * 
+ * colisões{
+ *  colisões com moedas, aranhas e paredes
+ * }
  * @author Abe
  */
 public class JogoNiver 
@@ -23,8 +29,9 @@ public class JogoNiver
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         frameGame gameFrame = new frameGame();
-        gameFrame.start();
+        gameFrame.start();    
+
     }
 }

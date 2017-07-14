@@ -12,113 +12,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.event.KeyEvent;
 import javax.imageio.ImageIO;
+import jogoniver.base.Elementos;
 
 /**
  *Classe a qual é responsável pela atualização do boneco, é nela onde setamos as
  * posições atuais, além de realizar a troca de sprites
  * @author Abe
  */
-public class Personagem extends Thread
-{
-    private int posiAtualX = 128, posiAtualY = 200; //Posições iniciais(X, Y) do sprite
-    private BufferedImage frameDir, frameEsq, currentFrame = null; //Ajuda na troca dos sprites
-    private BufferedImage[] run_R = null, run_L = null;//Guardo os vários sprites
-    private final int alturaSprite = 64, comprimentoSprite = 40; //Altura e comprimento do sprite
-    private Rectangle boxColisao = null; // "Caixa" de colisão  
-    /*Construtor*/
-    public Personagem()
-    {    
-        run_L = new BufferedImage[6];
-        run_R = new BufferedImage[6];  
-        
-        this.loadImagens();
-        currentFrame = frameDir;
-        boxColisao= new Rectangle(posiAtualX, posiAtualY, alturaSprite, comprimentoSprite);
+public class Personagem extends Elementos
+{   
+    public Personagem(String[] dir)
+    {
+        super(dir);
+        this.setPosiAtualX(200);
+        this.setPosiAtualY(400);
     }
-    
-    /*Carrega todas as imagens em memória*/
-       public void loadImagens()
-       {
-            try {
-		frameDir=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r.png"));
-		frameEsq=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l.png"));
-			
-		run_R[0]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r0.png"));
-		run_L[0]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l0.png"));
-			
-		run_R[1]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r1.png"));
-		run_L[1]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l1.png"));
-			
-		run_R[2]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r2.png"));
-		run_L[2]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l2.png"));
-			
-		run_R[3]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r3.png"));
-		run_L[3]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l3.png"));
-			
-		run_R[4]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r4.png"));
-		run_L[4]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l4.png"));
-			
-		run_R[5]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-r5.png"));
-		run_L[5]=ImageIO.read(getClass().getResource("../jogoniver/imagens/y-l5.png"));
-            } catch (Exception e) {
-		e.printStackTrace();
-		}       
-       }    
-       
-    /*Getters and setters*/   
-    public BufferedImage getFrameEsq() {
-        return frameEsq;
-    }
-
-    public void setFrameEsq(BufferedImage frameEsq) {
-        this.frameEsq = frameEsq;
-    }
-
-    public BufferedImage getCurrentFrame() {
-        return currentFrame;
-    }
-
-    public void setCurrentFrame(BufferedImage currentFrame) {
-        this.currentFrame = currentFrame;
-    }
-
-    public BufferedImage[] getRun_R() {
-        return run_R;
-    }
-
-    public void setRun_R(BufferedImage[] run_R) {
-        this.run_R = run_R;
-    }
-
-    public BufferedImage[] getRun_L() {
-        return run_L;
-    }
-
-    public void setRun_L(BufferedImage[] run_L) {
-        this.run_L = run_L;
-    }
-    
-    public int getPosiAtualX() {
-        return posiAtualX;
-    }
-
-    public void setPosiAtualX(int posiAtualX) {
-        this.posiAtualX = posiAtualX;
-    }
-
-    public int getPosiAtualY() {
-        return posiAtualY;
-    }
-
-    public void setPosiAtualY(int posiAtualY) {
-        this.posiAtualY = posiAtualY;
-    }
- 
-    public BufferedImage getFrameDir() {
-        return frameDir;
-    }
-
-    public void setFrameDir(BufferedImage frameDir) {
-        this.frameDir = frameDir;
-    }    
 }

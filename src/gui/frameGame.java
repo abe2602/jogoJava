@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jogoniver;
+package gui;
 
+import jogoniver.base.Keyboard;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -27,7 +28,7 @@ public class frameGame extends JFrame
     private int px;
     private char lastKey;
     private boolean jogando = true;
-    private final Set<Integer> pressed = new HashSet<Integer>();
+    
     
     public frameGame()
     {
@@ -38,7 +39,7 @@ public class frameGame extends JFrame
             @Override
             public void keyTyped(KeyEvent e)
             {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                System.out.println("SOLTA");
             }
 
             @Override
@@ -58,9 +59,11 @@ public class frameGame extends JFrame
 
  
         this.setVisible(true);
-        this.setSize(400, 600);
+        this.setSize(800, 800);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.add(panel);
+        this.getContentPane().add(panel);
+// this.add(panel);
+        this.panel.repaint();
     }
 
     public void start()
@@ -68,6 +71,8 @@ public class frameGame extends JFrame
         while(jogando){   
             long prxAtualizacao = 0; 
             if (System.currentTimeMillis() >= prxAtualizacao) {
+                
+            //    c.desenha();
                 this.panel.repaint();
                 prxAtualizacao = System.currentTimeMillis() + FPS;   
             }
