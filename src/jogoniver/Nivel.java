@@ -32,30 +32,15 @@ public class Nivel extends Cenario
             }
         }
         
-        for(i = 650; i <800; i++){
-            fase[400][i] = 3;
-        }
-
-        for(i = 100; i < 360; i++){
-            fase[i][i] = 3;
-        }
-        
-        for(i = 360; i <550; i++){
-            fase[i][360] = 3;
-        }
-        
-        for(i = 90; i <180; i++){
+        for(i = 0; i <400; i++){
+            fase[600][i] = 3;
+            fase[605][i] = 3;
+            fase[610][i] = 3;
             fase[100][i] = 3;
-            fase[459][i] = 3;
-            fase[540][i] = 3;
+            fase[105][i] = 3;
+            fase[110][i] = 3;
         }
-        
-        for(i = 0; i <100; i++){
-            fase[i][90] = 3;  
-            fase[i][330] = 3; 
-            fase[i][510] = 3; 
-            fase[i][630] = 3;
-        }    
+   
     }
     
     public void carregarFundo()
@@ -91,16 +76,33 @@ public class Nivel extends Cenario
     public void desenharCenario(Graphics2D g) 
     {
         this.carregarFundo();
+        
         g.drawImage(frameDir, 0, 0,null);
          this.carregarLabirinto();
+         this.carregarCenario();
         for(int i = 0; i < 800; i++){
             for(int j = 0; j < 800; j++){
                 if(fase[i][j] != -1){
-               //     this.carregarLabirinto();
-                   g.drawImage(frameDir, i, j, null);
+                  g.drawImage(frameDir, i, j, null);
                 }
             }
         }    
+    }
+
+    public int[][] getFase() {
+        return fase;
+    }
+
+    public void setFase(int[][] fase) {
+        this.fase = fase;
+    }
+
+    public BufferedImage getFrameDir() {
+        return frameDir;
+    }
+
+    public void setFrameDir(BufferedImage frameDir) {
+        this.frameDir = frameDir;
     }
     
    

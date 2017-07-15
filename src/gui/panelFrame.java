@@ -33,7 +33,7 @@ public class panelFrame extends JPanel
     private String[] dir = {"imagens/y-r.png","imagens/y-l.png",
         "imagens/y-r0.png","imagens/y-l0.png",
         "imagens/y-r1.png","imagens/y-l1.png"};
-    private Nivel n;
+    public Nivel nivel;
     private Colisoes c;
     
     public panelFrame()
@@ -43,7 +43,7 @@ public class panelFrame extends JPanel
         this.setSize(800, 800);
         this.p = new Personagem(dir);
       
-        this.n = new Nivel();
+        this.nivel = new Nivel();
 	this.setBackground(Color.BLACK);	
 	this.setLayout(null);
         
@@ -55,11 +55,10 @@ public class panelFrame extends JPanel
     {
         super.paintComponent(g);
         Graphics2D g2=(Graphics2D)g;
-        n.carregarCenario();
-        n.carregarFundo();
-        n.desenharCenario(g2);
-        this.c = new Colisoes();
-        c.confere(n.fase, p);
+        nivel.carregarCenario();
+        nivel.carregarFundo();
+        nivel.desenharCenario(g2);
+
         g2.drawImage(this.p.getCurrentFrame(),this.p.getPosiAtualX(), this.p.getPosiAtualY(),null);     
     }
 }

@@ -56,6 +56,15 @@ public class Elementos
     }
 
     /*Getters and setters*/
+
+    public int getAlturaSprite() {
+        return alturaSprite;
+    }
+
+    public int getComprimentoSprite() {
+        return comprimentoSprite;
+    }
+    
     public void setBoxColisao(Rectangle boxColisao) {
         this.boxColisao = boxColisao;
     }
