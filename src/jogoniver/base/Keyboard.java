@@ -19,7 +19,7 @@ import gui.panelFrame;
  */
 public class Keyboard 
 {
-    private int tecla = 0, limiteSuperior = 10, limiteInferior = 670, limiteEsquerda = 10, limiteDireita = 730;
+    private int tecla = 0, limiteSuperior = 20, limiteInferior = 670, limiteEsquerda = 10, limiteDireita = 720, passo = 10;
     private panelFrame panel;
     private char lastKey;
     
@@ -42,7 +42,7 @@ public class Keyboard
                             if(atual >= limiteDireita)
                               atual = limiteDireita;  
                             else                                                     
-                                panel.p.setPosiAtualX(atual + 20);                                  
+                                panel.p.setPosiAtualX(atual + passo);                                  
                             
                             aux = panel.p.getRun_R();   
                             panel.p.setCurrentFrame(aux[1]);
@@ -55,7 +55,7 @@ public class Keyboard
                             if(atual <= limiteEsquerda)
                               atual = limiteEsquerda;  
                             else
-                                panel.p.setPosiAtualX(atual - 20);
+                                panel.p.setPosiAtualX(atual - passo);
                             
                             aux = panel.p.getRun_L();
                             panel.p.setCurrentFrame(aux[1]);
@@ -69,7 +69,7 @@ public class Keyboard
                             if(atual <= limiteSuperior)
                               atual = limiteSuperior;  
                             else
-                                panel.p.setPosiAtualY(atual - 20);
+                                panel.p.setPosiAtualY(atual - passo);
 
                             break;      
                             
@@ -79,7 +79,7 @@ public class Keyboard
                             if(atual >= limiteInferior)
                               atual = limiteInferior;  
                             else
-                                panel.p.setPosiAtualY(atual + 20);
+                                panel.p.setPosiAtualY(atual + passo);
 
                             break;     
                             
@@ -100,7 +100,7 @@ public class Keyboard
                     if(atual >= limiteDireita)
                         atual = limiteDireita; 
                      else{                     
-                        panel.p.setPosiAtualX(atual + 20); 
+                        panel.p.setPosiAtualX(atual + passo); 
                     }
                     
                     aux = panel.p.getFrameDir();
@@ -113,7 +113,7 @@ public class Keyboard
                     if(atual <= limiteEsquerda)
                         atual = limiteEsquerda; 
                      else{
-                        panel.p.setPosiAtualX(atual - 20);
+                        panel.p.setPosiAtualX(atual - passo);
                      }
                      
                     aux = panel.p.getFrameEsq();                        
@@ -126,7 +126,7 @@ public class Keyboard
                     if(atual <= limiteSuperior)
                         atual = limiteSuperior;  
                     else
-                        panel.p.setPosiAtualY(atual + 20);
+                        panel.p.setPosiAtualY(atual + passo);
                     
                     if(lastKey == 'd'){
                         aux = panel.p.getFrameDir();
@@ -144,7 +144,7 @@ public class Keyboard
                     if(atual >= limiteInferior)
                         atual = limiteInferior;  
                     else
-                        panel.p.setPosiAtualY(atual - 20);
+                        panel.p.setPosiAtualY(atual - passo);
                         
                     if(lastKey == 'd'){
                         aux = panel.p.getFrameDir();

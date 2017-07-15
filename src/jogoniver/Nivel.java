@@ -16,7 +16,7 @@ import jogoniver.base.Cenario;
  */
 public class Nivel extends Cenario 
 {
-    private int[][] fase;
+    public int[][] fase;
     private BufferedImage frameDir;
     
     /*Falta acabar aqui!*/
@@ -25,27 +25,58 @@ public class Nivel extends Cenario
     {
         fase = new int[800][800];
         int i = 0, j = 0;
-        
+
         for(i = 0; i < 800; i++){
             for(j = 0; j < 800; j++){
                 fase[i][j] = -1;
             }
         }
         
-        for(i = 0; i < 770; i++){
-            fase[i][0] = 1;
-            fase[0][i] = 1;
+        for(i = 650; i <800; i++){
+            fase[400][i] = 3;
         }
+
+        for(i = 100; i < 360; i++){
+            fase[i][i] = 3;
+        }
+        
+        for(i = 360; i <550; i++){
+            fase[i][360] = 3;
+        }
+        
+        for(i = 90; i <180; i++){
+            fase[100][i] = 3;
+            fase[459][i] = 3;
+            fase[540][i] = 3;
+        }
+        
+        for(i = 0; i <100; i++){
+            fase[i][90] = 3;  
+            fase[i][330] = 3; 
+            fase[i][510] = 3; 
+            fase[i][630] = 3;
+        }    
     }
     
-    public void carregarSprite()
+    public void carregarFundo()
     {
         try{
-        frameDir = ImageIO.read(getClass().getResource("../jogoniver/imagens/pepperoni.png"));
+        frameDir = ImageIO.read(getClass().getResource("imagens/fundo.png"));
         }catch(Exception e){
 
         }
     }
+    
+    public void carregarLabirinto()
+    {
+        try{
+        frameDir = ImageIO.read(getClass().getResource("imagens/bloco.png"));
+     //  ImageResizer a;
+        }catch(Exception e){
+
+        }
+    }
+    
     @Override
     public void atualizarCenario() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -59,11 +90,14 @@ public class Nivel extends Cenario
     @Override
     public void desenharCenario(Graphics2D g) 
     {
-      //  this.carregarSprite();
+        this.carregarFundo();
+        g.drawImage(frameDir, 0, 0,null);
+         this.carregarLabirinto();
         for(int i = 0; i < 800; i++){
             for(int j = 0; j < 800; j++){
                 if(fase[i][j] != -1){
-                  g.drawImage(frameDir, i, j,null);  
+               //     this.carregarLabirinto();
+                   g.drawImage(frameDir, i, j, null);
                 }
             }
         }    

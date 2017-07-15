@@ -14,12 +14,11 @@ import javax.swing.WindowConstants;
  * 
  *O que fazer?
  * Cenário{
- *  Matrix , onde temos as posições válidas e inválidas
- *  com essa matrix, colocaremos os sprites do cenário
+ * Terminar o cenário!
  * }
  * 
- * colisões{
- *  colisões com moedas, aranhas e paredes
+ * colisões{ //Falta terminar
+ *  colisões com moedas
  * }
  * @author Abe
  */

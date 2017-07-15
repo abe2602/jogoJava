@@ -49,8 +49,16 @@ public class Elementos
 		e.printStackTrace();
 		}       
        }    
-       
-    /*Getters and setters*/   
+   
+   
+    public Rectangle getBoxColisao() {
+        return boxColisao;
+    }
+
+    /*Getters and setters*/
+    public void setBoxColisao(Rectangle boxColisao) {
+        this.boxColisao = boxColisao;
+    }
 
     public String[] getDir() {
         return dir;

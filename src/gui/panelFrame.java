@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import jogoniver.Colisoes;
 import jogoniver.Nivel;
 import jogoniver.Personagem;
 
@@ -29,11 +30,11 @@ import jogoniver.Personagem;
 public class panelFrame extends JPanel
 {
     public Personagem p;
-    public Personagem p2;
-    private String[] dir = {"../jogoniver/imagens/y-r.png","../jogoniver/imagens/y-l.png",
-        "../jogoniver/imagens/y-r0.png","../jogoniver/imagens/y-l0.png",
-        "../jogoniver/imagens/y-r1.png","../jogoniver/imagens/y-l1.png"};
+    private String[] dir = {"imagens/y-r.png","imagens/y-l.png",
+        "imagens/y-r0.png","imagens/y-l0.png",
+        "imagens/y-r1.png","imagens/y-l1.png"};
     private Nivel n;
+    private Colisoes c;
     
     public panelFrame()
     {
@@ -41,13 +42,12 @@ public class panelFrame extends JPanel
         this.setFocusable(true);
         this.setSize(800, 800);
         this.p = new Personagem(dir);
-        this.p2 = new Personagem(dir);
-        p2.setPosiAtualX(200);
-        p2.setPosiAtualY(200);
       
         this.n = new Nivel();
-	this.setBackground(Color.WHITE);	
+	this.setBackground(Color.BLACK);	
 	this.setLayout(null);
+        
+
     }
     
     @Override
@@ -56,10 +56,10 @@ public class panelFrame extends JPanel
         super.paintComponent(g);
         Graphics2D g2=(Graphics2D)g;
         n.carregarCenario();
-        n.carregarSprite();
+        n.carregarFundo();
         n.desenharCenario(g2);
-        //this.p.getFrameDir();
+        this.c = new Colisoes();
+        c.confere(n.fase, p);
         g2.drawImage(this.p.getCurrentFrame(),this.p.getPosiAtualX(), this.p.getPosiAtualY(),null);     
-        g2.drawImage(this.p2.getCurrentFrame(),this.p2.getPosiAtualX(), this.p2.getPosiAtualY(),null); 
     }
 }
